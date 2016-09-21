@@ -1,0 +1,5 @@
+rootProject.name = 'hello-world-for-rmi'
+include 'server'
+include 'client'
+include 'rmi'
+

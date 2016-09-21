@@ -1,0 +1,36 @@
+allprojects {
+    group 'com.lynn9388'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+}
+
+project(':server') {
+    apply plugin: 'application'
+
+    mainClassName = "com.lynn9388.helloworldforrmi.server.Server"
+
+    dependencies {
+        compile project(':rmi')
+    }
+}
+
+project(':client') {
+    apply plugin: 'application'
+
+    mainClassName = "com.lynn9388.helloworldforrmi.client.Client"
+
+    dependencies {
+        compile project(':rmi')
+    }
+}
+
+
