@@ -18,6 +18,7 @@ package com.lynn9388.helloworldforrmi.client;
 
 import com.lynn9388.helloworldforrmi.rmi.HelloWorld;
 
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -27,16 +28,18 @@ public class Client {
     public static void main(String[] args) {
         try {
             Registry registry = LocateRegistry.getRegistry(1099);
-            HelloWorld helloWorld = (HelloWorld) registry.lookup("HelloWorld");
+            HelloWorld helloWorld = (HelloWorld) registry.lookup(HelloWorld.NAME);
             System.out.println("Bound success!");
 
-            String hello = helloWorld.sayHello();
-            System.out.println("Client:" + hello);
-            System.console().readLine();
+            String message = helloWorld.sayHello("Hello!");
+            System.out.println("Message:" + message);
+            System.in.read();
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (NotBoundException e) {
             System.err.println("Bound failed!");
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

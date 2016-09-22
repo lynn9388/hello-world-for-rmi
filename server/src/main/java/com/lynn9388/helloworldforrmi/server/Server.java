@@ -25,11 +25,10 @@ import java.rmi.registry.Registry;
 public class Server {
     public static void main(String[] args) {
         try {
-            String name = "HelloWorld";
             HelloWorld stub = new HelloWorldImpl();
 
             Registry registry = LocateRegistry.createRegistry(1099);
-            registry.rebind(name, stub);
+            registry.rebind(HelloWorld.NAME, stub);
             System.out.println("Bound success!");
         } catch (RemoteException e) {
             System.err.print("Bound failed!");

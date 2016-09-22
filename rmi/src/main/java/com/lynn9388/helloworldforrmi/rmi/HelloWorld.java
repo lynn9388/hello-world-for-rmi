@@ -20,5 +20,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface HelloWorld extends Remote {
-    String sayHello() throws RemoteException;
+    String NAME = "HelloWorld";
+
+    String sayHello(String message) throws RemoteException;
 }
