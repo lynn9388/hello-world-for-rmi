@@ -14,41 +14,36 @@
  *  limitations under the License.
  */
 
-package com.lynn9388.helloworldforrmi.client;
+package com.lynn9388.helloworldforrmi.middle;
 
 import com.lynn9388.helloworldforrmi.rmi.HelloWorld;
 
-import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
-public class Client {
-    private static String middleIp = "localhost";
-    private static int middlePort = 1100;
+public class HelloWorldImpl extends UnicastRemoteObject implements HelloWorld {
+    private static String serverIp = "localhost";
+    private static int serverPort = 1099;
 
-    public static void sayHello(HelloWorld helloWorld, String message) {
-        try {
-            System.out.println("Send message to middle:" + message);
-            System.out.println("Message received from middle:" + helloWorld.sayHello(message));
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+    protected HelloWorldImpl() throws RemoteException {
     }
 
-    public static void main(String[] args) {
+    @Override
+    public String sayHello(String message) throws RemoteException {
+        System.out.println("Message received from client:" + message);
+
+        String echo = null;
+        Registry registry = LocateRegistry.getRegistry(serverIp, serverPort);
         try {
-            Registry registry = LocateRegistry.getRegistry(middleIp, middlePort);
             HelloWorld helloWorld = (HelloWorld) registry.lookup(HelloWorld.NAME);
-            System.out.println("Bound success!");
-            sayHello(helloWorld, "Hello!");
-            System.in.read();
+            echo = helloWorld.sayHello(message);
+            System.out.println("Message received from server:" + echo);
         } catch (NotBoundException e) {
-            System.err.println("Bound failed!");
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
+        return echo;
     }
 }

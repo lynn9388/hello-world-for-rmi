@@ -8,6 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello-world-for-rmi.iml" filepath="$PROJECT_DIR$/.idea/modules/hello-world-for-rmi.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello-world-for-rmi_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hello-world-for-rmi_main.iml" group="hello-world-for-rmi" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello-world-for-rmi_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hello-world-for-rmi_test.iml" group="hello-world-for-rmi" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/middle/middle.iml" filepath="$PROJECT_DIR$/.idea/modules/middle/middle.iml" group="middle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/middle/middle_main.iml" filepath="$PROJECT_DIR$/.idea/modules/middle/middle_main.iml" group="middle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/middle/middle_test.iml" filepath="$PROJECT_DIR$/.idea/modules/middle/middle_test.iml" group="middle" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/rmi/rmi.iml" filepath="$PROJECT_DIR$/.idea/modules/rmi/rmi.iml" group="rmi" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/rmi/rmi_main.iml" filepath="$PROJECT_DIR$/.idea/modules/rmi/rmi_main.iml" group="rmi" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/rmi/rmi_test.iml" filepath="$PROJECT_DIR$/.idea/modules/rmi/rmi_test.iml" group="rmi" />

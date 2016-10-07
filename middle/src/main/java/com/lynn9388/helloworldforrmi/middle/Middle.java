@@ -14,22 +14,27 @@
  *  limitations under the License.
  */
 
-package com.lynn9388.helloworldforrmi.server;
+package com.lynn9388.helloworldforrmi.middle;
 
 import com.lynn9388.helloworldforrmi.rmi.HelloWorld;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
-public class HelloWorldImpl extends UnicastRemoteObject implements HelloWorld {
-    protected HelloWorldImpl() throws RemoteException {
-    }
+public class Middle {
+    public static final int PORT = 1100;
 
-    @Override
-    public String sayHello(String message) throws RemoteException {
-        System.out.println("Message received from middle (client):" + message);
-        String echo = "Bonjour!";
-        System.out.println("Send message to middle (client):" + echo);
-        return echo;
+    public static void main(String[] args) {
+        try {
+            HelloWorld stub = new HelloWorldImpl();
+
+            Registry registry = LocateRegistry.createRegistry(PORT);
+            registry.rebind(HelloWorld.NAME, stub);
+            System.out.println("Bound success!");
+        } catch (RemoteException e) {
+            System.err.print("Bound failed!");
+            e.printStackTrace();
+        }
     }
 }

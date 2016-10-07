@@ -1,6 +1,6 @@
 allprojects {
     group 'com.lynn9388'
-    version '1.0'
+    version '1.1'
 
     apply plugin: 'java'
 
@@ -27,6 +27,16 @@ project(':client') {
     apply plugin: 'application'
 
     mainClassName = "com.lynn9388.helloworldforrmi.client.Client"
+
+    dependencies {
+        compile project(':rmi')
+    }
+}
+
+project(':middle') {
+    apply plugin: 'application'
+
+    mainClassName = "com.lynn9388.helloworldforrmi.middle.Middle"
 
     dependencies {
         compile project(':rmi')

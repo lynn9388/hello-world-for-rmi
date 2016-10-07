@@ -23,6 +23,8 @@
       <module name="client_test" target="1.8" />
       <module name="hello-world-for-rmi_main" target="1.8" />
       <module name="hello-world-for-rmi_test" target="1.8" />
+      <module name="middle_main" target="1.8" />
+      <module name="middle_test" target="1.8" />
       <module name="rmi_main" target="1.8" />
       <module name="rmi_test" target="1.8" />
       <module name="server_main" target="1.8" />
