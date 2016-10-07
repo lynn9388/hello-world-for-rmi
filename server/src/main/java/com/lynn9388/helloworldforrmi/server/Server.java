@@ -23,11 +23,13 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class Server {
+    public static final int PORT = 1099;
+
     public static void main(String[] args) {
         try {
             HelloWorld stub = new HelloWorldImpl();
 
-            Registry registry = LocateRegistry.createRegistry(1099);
+            Registry registry = LocateRegistry.createRegistry(PORT);
             registry.rebind(HelloWorld.NAME, stub);
             System.out.println("Bound success!");
         } catch (RemoteException e) {

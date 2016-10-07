@@ -25,17 +25,25 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class Client {
-    public static void main(String[] args) {
-        try {
-            Registry registry = LocateRegistry.getRegistry(1099);
-            HelloWorld helloWorld = (HelloWorld) registry.lookup(HelloWorld.NAME);
-            System.out.println("Bound success!");
+    private static String serverIp = "localhost";
+    private static int serverPort = 1099;
 
-            String message = helloWorld.sayHello("Hello!");
-            System.out.println("Message:" + message);
-            System.in.read();
+    public static void sayHello(HelloWorld helloWorld, String message) {
+        try {
+            System.out.println("Send message:" + message);
+            System.out.println("Message received:" + helloWorld.sayHello(message));
         } catch (RemoteException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            Registry registry = LocateRegistry.getRegistry(serverIp, serverPort);
+            HelloWorld helloWorld = (HelloWorld) registry.lookup(HelloWorld.NAME);
+            System.out.println("Bound success!");
+            sayHello(helloWorld, "Hello!");
+            System.in.read();
         } catch (NotBoundException e) {
             System.err.println("Bound failed!");
             e.printStackTrace();

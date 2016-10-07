@@ -27,7 +27,9 @@ public class HelloWorldImpl extends UnicastRemoteObject implements HelloWorld {
 
     @Override
     public String sayHello(String message) throws RemoteException {
-        System.out.println("Message:" + message);
-        return "Bonjour!";
+        System.out.println("Message received:" + message);
+        String echo = "Bonjour!";
+        System.out.println("Echo message:" + echo);
+        return echo;
     }
 }
